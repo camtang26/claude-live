@@ -640,14 +640,24 @@ Before progressing between major phases, ALL criteria must be checked:
 **Success Metric**: All tools installed, all research documented, all decisions made
 
 ### Research & Planning
-☐ Read all relevant Graphiti documentation
-☐ Research Neo4j best practices for our use case
+✓ Read all relevant Graphiti documentation
+  - Graphiti is a real-time, temporally-aware knowledge graph framework
+  - Uses bi-temporal model tracking when events occurred and when ingested
+  - Supports both unstructured text and structured JSON ingestion
+  - Built on top of Zep's memory layer for AI agents
+  - Hybrid search: semantic + BM25 text + graph proximity
+✓ Research Neo4j best practices for our use case
+  - Implement temporal relationships with timestamps
+  - Use PREVIOUS relationships for version control
+  - Track current state with HAS_CURRENT_* relationships
+  - Unique node identification is critical
+  - Balance property complexity vs node/relationship count
 ☐ Study OpenAI embeddings integration patterns
 ☐ Review our existing AI-Ghostwriter ADK codebase
 ☐ Analyze our successful Manager Agent ML implementation
 ☐ Research WebSocket vs REST for agent communication
 ☐ Study MCP server creation best practices
-☐ Document all findings in this file
+✓ Document all findings in this file
 
 ### Environment Setup
 ✓ Verify WSL2 Ubuntu is up to date
