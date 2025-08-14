@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--background: 45 34% 95%;
+	--foreground: 30 8% 14%;
+	--muted: 40 15% 88%;
+	--muted-foreground: 30 6% 35%;
+	--border: 35 12% 80%;
+	--input: 35 12% 80%;
+	--ring: 35 28% 56%;
+	--radius: 0.75rem;
+
+	/* Art Deco tokens */
+	--deco-gold: #B8956A;
+	--deco-burgundy: #6B2737;
+	--deco-sage: #87907D;
+	--deco-gray: #4A4843;
+	--deco-cream: #F5F2E8;
+	--deco-charcoal: #2C2825;
+}
+
+.dark {
+	--background: 30 7% 12%;
+	--foreground: 40 30% 93%;
+	--muted: 30 6% 18%;
+	--muted-foreground: 30 4% 65%;
+	--border: 30 6% 28%;
+	--input: 30 6% 28%;
+	--ring: 35 28% 56%;
+}
+
+@layer base {
+	* {
+		@apply border-[hsl(var(--border))];
+	}
+	body {
+		@apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))] antialiased;
+		background-image:
+			radial-gradient(ellipse at center, rgba(0,0,0,0.0) 40%, rgba(0,0,0,0.15) 100%),
+			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/fiIiter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.03'/%3E%3C/svg%3E");
+		background-blend-mode: multiply;
+	}
+}
+
+/* Cinematic utilities */
+@layer utilities {
+	.text-balance {
+		text-wrap: balance;
+	}
+	.vignette {
+		background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.35) 100%);
+	}
+	.letterbox::before,
+	.letterbox::after {
+		content: "";
+		position: fixed;
+		left: 0;
+		right: 0;
+		height: 10vh;
+		background: rgba(0,0,0,0.7);
+		pointer-events: none;
+		z-index: 40;
+	}
+	.letterbox::before { top: 0; }
+	.letterbox::after { bottom: 0; }
+
+	.gold-text {
+		color: var(--deco-gold);
+		text-shadow: 0 1px 0 rgba(0,0,0,0.05), 0 0 8px rgba(184, 149, 106, 0.25);
+		letter-spacing: 0.04em;
+	}
+
+	/* Spotlight cursor effect for hero */
+	.spotlight {
+		position: relative;
+		overflow: hidden;
+	}
+	.spotlight::after {
+		content: "";
+		position: absolute;
+		inset: -40vmax;
+		background: radial-gradient(200px 200px at var(--x,50%) var(--y,50%), rgba(255,255,255,0.22), rgba(255,255,255,0) 60%);
+		pointer-events: none;
+		mix-blend-mode: overlay;
+	}
+}
+
+/* Decorative borders using clip-paths */
+.deco-border {
+	position: relative;
+}
+.deco-border::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+	border: 1px solid var(--deco-gold);
+	pointer-events: none;
+}
