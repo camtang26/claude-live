@@ -1,0 +1,1 @@
+Place `public/hero.jpg` and `public/stills/still-1.jpg`, `still-2.jpg`, `still-3.jpg` to complete the visual experience.

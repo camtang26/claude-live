@@ -1,0 +1,7 @@
+Add images:
+- hero.jpg (Art Deco building or cinematic theater)
+- stills/still-1.jpg
+- stills/still-2.jpg
+- stills/still-3.jpg
+
+Suggested sources: Unsplash, Pexels. Apply vintage grading if desired.
